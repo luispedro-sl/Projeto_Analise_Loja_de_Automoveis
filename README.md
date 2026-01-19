@@ -67,49 +67,74 @@ O processo de **ETL (Extract, Transform, Load)** foi realizado utilizando **Post
 ### Exemplo de Query
 
 ```sql
-CREATE TABLE vendas_tratadas AS
+WITH tabelarest AS (
+    SELECT
+        t1.product_id,
+        t1.customer_id,
+        (t2.price + (t2.price * t1.discount)) AS valor_real,
+        EXTRACT(MONTH FROM paid_date) AS mes,
+        EXTRACT(YEAR FROM paid_date) AS ano
+    FROM sales.funnel AS t1
+    LEFT JOIN sales.products AS t2
+        ON t1.product_id = t2.product_id
+    WHERE paid_date IS NOT NULL
+    ORDER BY paid_date
+)
 SELECT
-  CAST(cliente_id AS TEXT) AS cliente_id,
-  DATE(data_venda) AS data_venda,
-  estado,
-  marca,
-  valor_venda,
-  status_profissional,
-  faixa_salarial
-FROM vendas_raw
-WHERE valor_venda IS NOT NULL
+    ROUND(SUM(valor_real) / COUNT(DISTINCT customer_id), 2) AS ticket_medio,
+    SUM(valor_real) AS faturamento,
+    mes,
+    ano
+FROM tabelarest
+GROUP BY
+    ano,
+    mes;
+
 ````
 ## 5. Principais Insights
 
-Com base na análise dos dados de atividade física e sono, os principais insights foram:
+Com base na análise dos dados de **vendas, leads e comportamento dos clientes**, foram identificados os seguintes padrões estratégicos para campanhas de marketing e veiculação de anúncios:
 
-| Tipo de Conteúdo          | Melhor Dia           | Melhor Horário  |
-|---------------------------|-------------------|----------------|
-| Post Rápido / Story       | Sábado e Domingo  | 18:00 - 20:00  |
-| Post Longo / Carrossel    | Domingo e Segunda | 16:00 - 19:00  |
-| Vídeo (Reels / Shorts)    | Domingo           | 16:00 - 19:00  |
+| Tipo de Campanha            | Melhor Dia           | Melhor Horário |
+|-----------------------------|----------------------|----------------|
+| Anúncios Promocionais       | Sexta e Sábado       | 18:00 – 21:00 |
+| Conteúdo Institucional      | Segunda e Terça      | 16:00 – 19:00 |
+| Campanhas de Conversão      | Domingo              | 17:00 – 20:00 |
 
-**Observações:**
-- Sábado e Domingo apresentam maior atividade intensa dos usuários, ideal para posts rápidos.  
-- Domingo e Segunda são melhores para conteúdo mais longo e vídeos, aproveitando o menor sedentarismo no período da tarde.  
-- Os horários de maior atividade geral ficam entre **16h e 20h**, sendo ideais para publicações.  
+### Observações
+
+- **Sexta e sábado** concentram maior volume de acessos e interações, sendo ideais para **anúncios promocionais de curto impacto**.  
+- **Segunda e terça-feira** apresentam melhor desempenho para **conteúdo institucional e informativo**, quando os usuários demonstram maior atenção.  
+- **Domingo** registra a **maior taxa de conversão**, indicando um momento favorável para campanhas focadas em fechamento de vendas.  
+- Os horários de maior engajamento geral ocorrem entre **16h e 21h**, tornando esse intervalo o mais eficiente para **veiculação de anúncios**.
 
 ---
 
 ## 6. Problemas Encontrados e Soluções
 
-Durante o processo de ETL e análise, os seguintes problemas foram identificados:
+Durante o processo de **ETL e análise em PostgreSQL**, os seguintes problemas foram identificados:
 
-1. **Inconsistência de formatos de data**
-   - Solução: padronização com funções de data no BigQuery (`DATE()`, `CAST`) e ajustes em planilhas quando necessário.
+1. **Inconsistência nos formatos de data e valores monetários**  
+   - Solução: padronização utilizando funções do PostgreSQL como `TO_DATE`, `CAST` e `NUMERIC`.
 
-2. **Duplicatas após JOIN**
-   - Solução: remoção via deduplicação em BigQuery e ferramentas de limpeza.
+2. **Duplicidade de registros após JOIN entre tabelas**  
+   - Solução: deduplicação com uso de `ROW_NUMBER()` e filtros por chaves primárias.
 
-3. **Registros com campos primários ausentes (Id ou Data)**
-   - Solução: exclusão desses registros, pois não eram confiáveis para análise.
+3. **Registros com campos essenciais ausentes (ID ou Data)**  
+   - Solução: exclusão desses registros, uma vez que não eram confiáveis para análises analíticas.
 
-Essas ações garantiram a **qualidade e consistência dos dados** para os insights finais.
+Essas ações garantiram a **qualidade, integridade e consistência dos dados**, possibilitando a geração de insights confiáveis para tomada de decisão.
 
+---
 
-![Dashboard ](GraficoPosts.png)
+## 7. Dashboard
+
+Os resultados finais foram consolidados em um **dashboard analítico**, permitindo a visualização clara dos principais indicadores de desempenho, como:
+
+- Faturamento por estado e marca  
+- Ticket médio por perfil de cliente  
+- Dias com maior acesso de Leads
+- Gênero, Faixa Etária e Faixa Salarial dos clientes
+
+![Dashboard de Vendas e Marketing](Graficos_Analise_de_Vendas.png)
+![Dashboard de Perfil de Clientes e Produtos ](Graficos_Analise_de_Perfil_Clientes.png)
