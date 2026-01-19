@@ -136,5 +136,5 @@ Os resultados finais foram consolidados em um **dashboard analítico**, permitin
 - Dias com maior acesso de Leads
 - Gênero, Faixa Etária e Faixa Salarial dos clientes
 
-![Dashboard de Vendas e Marketing](Graficos_Analise_de_Vendas.png)
-![Dashboard de Perfil de Clientes e Produtos ](Graficos_Analise_de_Perfil_Clientes.png)
+![Dashboard de Vendas e Marketing](Gráficos/Graficos_Analise_de_Vendas.png)
+![Dashboard de Perfil de Clientes e Produtos ](Gráficos/Graficos_Analise_de_Perfil_Clientes.png)
