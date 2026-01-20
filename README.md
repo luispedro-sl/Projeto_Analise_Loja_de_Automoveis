@@ -105,20 +105,32 @@ GROUP BY
 ````
 ## 5. Principais Insights
 
-Com base na análise dos dados de **vendas, leads e comportamento dos clientes**, foram identificados os seguintes padrões estratégicos para campanhas de marketing e veiculação de anúncios:
+A análise dos dados revelou padrões importantes para **tomada de decisão estratégica**, destacando oportunidades de investimento, marketing e expansão.  
 
-| Tipo de Campanha            | Melhor Dia           | Melhor Horário |
-|-----------------------------|----------------------|----------------|
-| Anúncios Promocionais       | Sexta e Sábado       | 18:00 – 21:00 |
-| Conteúdo Institucional      | Segunda e Terça      | 16:00 – 19:00 |
-| Campanhas de Conversão      | Domingo              | 17:00 – 20:00 |
+### 5.1 Desempenho Geográfico
+- **São Paulo** concentra aproximadamente **65% das vendas**, liderando o mercado.
+- **Minas Gerais** apresenta crescimento relevante, configurando-se como **potencial polo de expansão**.
+- **Estratégia:** priorizar campanhas e investimento em Minas Gerais para capturar mercado emergente.
 
-### Observações
+### 5.2 Produtos e Marcas
+- **FIAT, CHEVROLET e VOLKSWAGEN** concentram a maior parte das vendas, seguindo o **Princípio de Pareto (80/20)**.
+- Preferência por **veículos seminovos com 4 a 10 anos de uso**, indicando maior aderência ao mercado.
+- **Estratégia:** focar em estoque, promoções e anúncios dessas marcas e faixas etárias de veículos.
 
-- **Sexta e sábado** concentram maior volume de acessos e interações, sendo ideais para **anúncios promocionais de curto impacto**.  
-- **Segunda e terça-feira** apresentam melhor desempenho para **conteúdo institucional e informativo**, quando os usuários demonstram maior atenção.  
-- **Domingo** registra a **maior taxa de conversão**, indicando um momento favorável para campanhas focadas em fechamento de vendas.  
-- Os horários de maior engajamento geral ocorrem entre **16h e 21h**, tornando esse intervalo o mais eficiente para **veiculação de anúncios**.
+### 5.3 Perfil dos Clientes
+- Predominância de clientes com **vínculo CLT**, faixa etária **20–40 anos** e renda mensal **R$5.000–R$10.000**.
+- Distribuição de gênero **equilibrada**, permitindo campanhas de marketing amplas.
+- **Estratégia:** segmentar ações de marketing para consumidores economicamente ativos e instruídos, ajustando comunicação e ofertas conforme perfil.
+
+### 5.4 Comportamento Digital
+- Acessos ao site **concentrados no início da semana**, possivelmente alinhados à rotina CLT.
+- **Estratégia:** intensificar investimentos em marketing digital nos dias de maior acesso e coletar dados em escalas menores (horas/minutos) para otimizar publicações e campanhas.
+
+### 5.5 Indicadores de Performance
+- **Leads, taxa de conversão e faturamento** apresentam crescimento consistente.
+- Não há quedas abruptas, indicando **eficiência das estratégias de marketing e design**.
+- **Estratégia:** manter campanhas atuais, monitorar tendências e escalar ações nos mercados mais promissores.
+
 
 ---
 
