@@ -22,7 +22,7 @@ Com base nos **padrões de vendas das lojas** e nos **dados comportamentais dos 
 
 ## 2. Dataset
 
-O dataset foi obtido a partir de uma **fonte pública no Kaggle**, simulando dados reais do setor automotivo.
+O dataset utilizado neste estudo de caso foi fornecido como parte de um **curso da Udemy**, simulando dados reais do setor automotivo para fins educacionais e analíticos.
 
 Principais conjuntos de dados:
 
@@ -31,7 +31,9 @@ Principais conjuntos de dados:
 - Dados de leads e conversões
 - Dados de acesso e interação com campanhas digitais
 
-**Formatos:** `.csv`
+**Formatos:** `.csv`  
+
+> **Observação:** Embora os dados sejam fictícios, eles seguem padrões realistas, permitindo a aplicação prática de técnicas de **ETL, análise e visualização de dados**.
 
 ---
 
